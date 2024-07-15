@@ -10,13 +10,12 @@ app.use(
   cors({
     origin: (origin, callback) => {
       const ACCEPTED_ORIGINS = [
-        'http://localhost:5500',
-        'http://localhost:1234',
+        'http://127.0.0.1:5500',
         'http://movies.com',
         'http://jhosep.go',
       ]
 
-      if (ACCEPTED_ORIGINS.includes(origin) || origin) {
+      if (ACCEPTED_ORIGINS.includes(origin) || !origin) {
         return callback(null, true)
       } else {
         return callback(new Error('Not allowed by CORS'))
